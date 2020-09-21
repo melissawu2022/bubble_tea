@@ -1,0 +1,9 @@
+ul{
+    border-style: solid;
+    border-color: black;
+    border-width: 20px;
+    border-radius: 10px;
+    display:inline-block;
+    border:solid #000;
+    padding:20px;
+}

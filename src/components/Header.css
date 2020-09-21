@@ -1,0 +1,11 @@
+header {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: xx-large;
+    text-align: center;
+    background: black;
+    color: white;
+}
+
+h1 {
+    padding: 40px;
+}
