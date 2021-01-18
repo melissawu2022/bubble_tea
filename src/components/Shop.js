@@ -4,7 +4,6 @@ import './Shop.css';
 
 
 class Shop extends Component {
-
     render() {
         const {name, rating, price, image_url} = this.props.shop;
         return (

@@ -1,13 +1,17 @@
 import React, {Component} from "react";
-import Shops from "./components/Shops";
+import ShopList from "./components/ShopList";
 import "./App.css";
 import Header from "./components/Header";
-import LocationSearch from ".components/LocationSearch";
+import SpacingGrid from "./components/SpacingGrid";
+import SearchBar from "./components/SearchBar";
+import axios from "axios";
+
 
 class App extends Component {
 	state = {
 		shops: [
 			{
+				isLoaded: false,
 				name: "Gary Danko",
 				rating: 4.5,
 				"review count": 5296,
@@ -24,13 +28,49 @@ class App extends Component {
 		],
 	};
 
+	componentDidMount() {
+		axios
+      .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then(shops => this.setState({ todos: shops.data }))
+	}
+	/*componentDidMount() {
+		fetch('https://jsonplaceholder.typicode.com/users')
+		.then(res => res.json())
+		.then(json => {
+			this.setState({
+				isLoaded: true,
+				shops: json
+			})
+		})
+	}*/
+
+
 	render() {
+		/*var {isLoaded, shops} = this.state;
+		if(!isLoaded) {
+			return <div>Loading...</div>
+		} else {
+			return (
+				<div className="App">
+					<ul>
+						{shops.map(item => (
+							<li key={item.id}>
+								Name: {item.name} | {item.email}
+							</li>
+						))}
+					</ul>
+				</div>
+			)
+		}
+		*/
+		
 		return (
 			<div className="App">
 				<div className="container">
 					<Header />
-					<LocationSearch />
-					<Shops shops={this.state.shops} />
+					<SearchBar />
+					<SpacingGrid/>
+					<ShopList shops={this.state.shops} />
 				</div>
 			</div>
 		);
