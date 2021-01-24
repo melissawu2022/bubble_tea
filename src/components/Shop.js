@@ -5,15 +5,13 @@ import './Shop.css';
 
 class Shop extends Component {
     render() {
-        const {name, rating, price, image_url} = this.props.shop;
+        const {id, title, userId} = this.props.shop;
         return (
             <div className="container ShopContainer">
                 <ul>
-                    <img src={image_url} alt="Chatime" style={{width: "200px"}}/>
-                    <li>{name}</li>
-                    <li>{rating}</li>
-                    <li>{price}</li>
-                   
+                    <li>user id: {userId}</li>
+                    <li>id: {id}</li>
+                    <li>title: {title}</li>
                 </ul>
             </div>
         )

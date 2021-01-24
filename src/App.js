@@ -9,7 +9,8 @@ import axios from "axios";
 
 class App extends Component {
 	state = {
-		shops: [
+		shops: []
+		/*shops: [
 			{
 				isLoaded: false,
 				name: "Gary Danko",
@@ -25,13 +26,13 @@ class App extends Component {
 				url:
 					"https://www.yelp.com/biz/gary-danko-san-francisco?adjust_creative=wpr6gw4FnptTrk1CeT8POg&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=wpr6gw4FnptTrk1CeT8POg",
 			},
-		],
+		],*/
 	};
 
 	componentDidMount() {
 		axios
       .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-      .then(shops => this.setState({ todos: shops.data }))
+      .then(json => this.setState({ shops: json.data }))
 	}
 	/*componentDidMount() {
 		fetch('https://jsonplaceholder.typicode.com/users')
@@ -46,6 +47,16 @@ class App extends Component {
 
 
 	render() {
+		return (
+			<div className="App">
+				<div className="container">
+					<Header />
+					<SearchBar />
+					<SpacingGrid/>
+					<ShopList shopList={this.state.shops} />
+				</div>
+			</div>
+		);
 		/*var {isLoaded, shops} = this.state;
 		if(!isLoaded) {
 			return <div>Loading...</div>
@@ -63,17 +74,6 @@ class App extends Component {
 			)
 		}
 		*/
-		
-		return (
-			<div className="App">
-				<div className="container">
-					<Header />
-					<SearchBar />
-					<SpacingGrid/>
-					<ShopList shops={this.state.shops} />
-				</div>
-			</div>
-		);
 	}
 }
 

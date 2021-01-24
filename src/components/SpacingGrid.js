@@ -9,19 +9,18 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    height: 140,
-    width: 100,
+    height: 200,
+    width: 200,
   },
   control: {
     padding: theme.spacing(2),
   },
 }));
 
-
-
 export default function SpacingGrid() {
-  const [spacing] = React.useState(2);
+  const [spacing] = React.useState(5);
   const classes = useStyles();
+  
 
     return (
       <Grid container className={classes.root} spacing={2}>
