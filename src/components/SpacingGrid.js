@@ -17,18 +17,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SpacingGrid() {
-  const [spacing] = React.useState(5);
+function generateUniqueNumber() {
+  return new Date().valueOf(); 
+}
+
+export default function SpacingGrid(props) {
+  const [spacing] = React.useState(2);
   const classes = useStyles();
+  //const {id, title, userId} = this.props.shopList;
   
 
     return (
       <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
               <Grid container justify="center" spacing={spacing}>
-              {[0, 1, 2].map((value) => (
-                  <Grid key={value} item>
-                    <Paper className={classes.paper} style={{fontFamily: 'Courier New ', textAlign:"center"}}> xs=3</Paper>
+              {[0].map((value, idx) => (
+                  <Grid key={idx} item> 
+                  {props.shopList.map((shop, idx2) => 
+                    <Paper className="paper-style" key={idx2}> 
+                      <h1 id={shop.id}>
+                        {shop.name}
+                      </h1>  
+                      </Paper>
+                    )}   
                   </Grid>
               ))}
               </Grid>

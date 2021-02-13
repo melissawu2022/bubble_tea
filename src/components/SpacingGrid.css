@@ -1,4 +1,9 @@
-Paper {
-    font-family: 'Courier New', Courier, monospace;
+.paper-style {
+    font-family:'Courier New';
+    font-size: 10px;
+    font-weight: 2  00;
     text-align: center;
+    margin-top: 50px;
+
+
 }

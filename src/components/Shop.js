@@ -7,7 +7,7 @@ class Shop extends Component {
     render() {
         const {id, title, userId} = this.props.shop;
         return (
-            <div className="container ShopContainer">
+                <div className="container ShopContainer">
                 <ul>
                     <li>user id: {userId}</li>
                     <li>id: {id}</li>
