@@ -45,38 +45,6 @@ class App extends Component {
             });
     };
 
-    /*
-	componentDidMount() {
-	  //.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-	  //const proxyurl = "https://cors-anywhere.herokuapp.com/";
-	  const url = 'https://api.yelp.com/v3/businesses/search?term=bubbletea&latitude=37.786882&longitude=-122.399972';
-	  const config = {
-		  //withCredentials: false,
-		  headers: {
-		  "Authorization": "Bearer XZRFvIgI1ifKg9sNL5MALDwA2RI2-3wMO8DdxVvIDHiliZuMrEuTIEpNeAfLh_1zKpRwqWBTsnSBLlgIHsnYgepPcD_OMJGo6CZA6L3q0v4saVQgj__oJPfxSmRWX3Yx",
-		  "Content-Type": "application/json",
-		  'Access-Control-Allow-Origin' : '*',
-		  'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-		  'Access-Control-Allow-Headers': 'append,delete,entries,foreach,get,has,keys,set,values,Authorization'
-		  }
-		}
-	  axios.get( url,config)
-      .then(json => this.setState({ shopList: json.data })).catch(err => {
-		  console.log(err)
-	  })
-	}
-	*/
-    /*componentDidMount() {
-		fetch('https://jsonplaceholder.typicode.com/users')
-		.then(res => res.json())
-		.then(json => {
-			this.setState({
-				isLoaded: true,
-				shops: json
-			})
-		})
-	}*/
-
     render() {
         console.log("render");
         return (
@@ -88,23 +56,6 @@ class App extends Component {
                 </div>
             </div>
         );
-        /*var {isLoaded, shops} = this.state;
-		if(!isLoaded) {
-			return <div>Loading...</div>
-		} else {
-			return (
-				<div className="App">
-					<ul>
-						{shops.map(item => (
-							<li key={item.id}>
-								Name: {item.name} | {item.email}
-							</li>
-						))}
-					</ul>
-				</div>
-			)
-		}
-		*/
     }
 }
 

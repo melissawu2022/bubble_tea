@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import "./SpacingGrid.css";
+import Shop from "./Shop";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,13 +27,9 @@ export default function SpacingGrid(props) {
                 <Grid container justify="center" spacing={spacing}>
                     {[0].map((idx) => (
                         <Grid key={idx} item>
-                            <Shop shop={props}/>
+                            
                             {props.shopList.map((shop, idx2) => (
-                                <Paper className="paper-style" key={idx2}>
-                                    <h1 className="spacing-grid-paper-h1"> {shop.name} </h1>
-                                    <h2 className="spacing-grid-paper-h2">Rating: {shop.rating}</h2>
-                                    <img className="bbt-image" src={shop.image_url}/>
-                                </Paper>
+                                <Shop shop={shop} key={idx2} />
                             ))}
                         </Grid>
                     ))}
