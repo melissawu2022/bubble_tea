@@ -1,9 +1,10 @@
-header {
-    font-family: 'Courier New', Courier, monospace;
+.bbt-header {
+    font-family: "Courier New", Courier, monospace;
     font-size: xx-large;
     text-align: center;
-    background: black;
+    background-color: black;
     color: white;
+    flex-wrap: wrap;
 }
 
 h1 {

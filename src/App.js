@@ -1,53 +1,51 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import SpacingGrid from "./components/SpacingGrid";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";
 
-
 class App extends Component {
-	state = {
-		shopList: []
-	};
+    state = {
+        shopList: []
+    };
 
-	componentDidMount () {
-		console.log("componentDidMount");
-        this.getRestaurantsFromApi('boba','Ottawa');
-	}
-	
-	 getRestaurantsFromApi = (searchTerm,locationSearched) => {
-        //UI feedback to tell the user when we are retrieving infromation from the API 
-        this.setState({ loading: true })
-
-        //using a proxy server cors-anywhere to get rid of the CROS probblem 
-        //SUPER HOT TIP: passing the location variable, which equals to the user's input (see below). Instead of grabbbing the entire API, it will only retrieve the restaurants that are closed to the lcoation information we entered. This makes the lodading wayyyyyyy faster.
-        axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${locationSearched}`, {
-        //required authorization format from API 
-        headers: {
-            //to get the API from the .env file use process.env.{variable name}
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-        },
-        //option params passed to API call to retrieve only breakfast and lunch spots 
-        params: {
-			//categories: 'breakfast_brunch',
-			term: searchTerm,
-        }
-        })
-        .then((res) => {
-            console.log(res.data.businesses)
-            //change the state of App to reflect on the result we are given from the API
-            //at the same time, setting the loading state to false 
-            this.setState({ shopList: res.data.businesses })
-        })
-        .catch((err) => {
-            //fire the errorState message if there is no information return from the API
-            this.setState({ errorState: `Sorry we coudln't find information related to the location you search, do you want to try something else?`, loading: false })
-        })
+    componentDidMount() {
+        console.log("componentDidMount");
+        this.getRestaurantsFromApi("boba", "Ottawa");
     }
 
+    getRestaurantsFromApi = (searchTerm, locationSearched) => {
+        //UI feedback to tell the user when we are retrieving infromation from the API
+        this.setState({ loading: true });
 
-	/*
+        axios
+            .get(
+                `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=${locationSearched}`,
+                {
+                    headers: {
+                        //to get the API from the .env file use process.env.{variable name}
+                        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+                    },
+                    //option params passed to API call to retrieve only search term spots
+                    params: {
+                        term: searchTerm
+                    }
+                }
+            )
+            .then((res) => {
+                console.log(res.data.businesses);
+                this.setState({ shopList: res.data.businesses });
+            })
+            .catch((err) => {
+                this.setState({
+                    errorState: `Sorry we coudln't find information related to the location you search, do you want to try something else?`,
+                    loading: false
+                });
+            });
+    };
+
+    /*
 	componentDidMount() {
 	  //.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
 	  //const proxyurl = "https://cors-anywhere.herokuapp.com/";
@@ -68,7 +66,7 @@ class App extends Component {
 	  })
 	}
 	*/
-	/*componentDidMount() {
+    /*componentDidMount() {
 		fetch('https://jsonplaceholder.typicode.com/users')
 		.then(res => res.json())
 		.then(json => {
@@ -79,19 +77,18 @@ class App extends Component {
 		})
 	}*/
 
-
-	render() {
-		console.log("render");
-		return (
-			<div className="App">
-				<div className="container">
-					<Header />
-					<SearchBar />
-					<SpacingGrid shopList={this.state.shopList}/>
-				</div>
-			</div>
-		);
-		/*var {isLoaded, shops} = this.state;
+    render() {
+        console.log("render");
+        return (
+            <div className="App">
+                <div className="container">
+                    <Header />
+                    <SearchBar />
+                    <SpacingGrid shopList={this.state.shopList} />
+                </div>
+            </div>
+        );
+        /*var {isLoaded, shops} = this.state;
 		if(!isLoaded) {
 			return <div>Loading...</div>
 		} else {
@@ -108,7 +105,7 @@ class App extends Component {
 			)
 		}
 		*/
-	}
+    }
 }
 
 export default App;
