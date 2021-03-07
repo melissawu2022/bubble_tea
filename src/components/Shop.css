@@ -8,11 +8,6 @@ ul{
     padding:20px;
 }
 
-.bbt-image{ 
-    max-height: 300px;
-    max-width: 300px;
-}
-
 .first-header {
     padding: 0px; 
 }
@@ -29,5 +24,7 @@ ul{
     padding: 25px;
     display: flexbox;
 }
+
+
 
 

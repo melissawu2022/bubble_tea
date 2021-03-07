@@ -4,9 +4,11 @@ import Shop from "./Shop";
 
 export default function SpacingGrid(props) {
     return (
-        <div class="grid-container">
-            {props.shopList.map((shop, idx2) => (
-                <Shop shop={shop} key={idx2} />
+        <div className="grid-container">
+            {props.shopList.map((shop, idx) => (
+                <div key={idx}>
+                    <Shop shop={shop} key={idx + 1} />
+                </div>
             ))}
         </div>
     );
